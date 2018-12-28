@@ -40,7 +40,8 @@
                         $parent_id = "null";
                         $sql = "INSERT INTO page(name, url, position) VALUES ('$name', '$url',  $count)";
                     }else{
-                        $sql = "INSERT INTO page(name, url, position, parent_id) VALUES ('$name', '$url',  $count, (SELECT id FROM page WHERE id=$parent_id))";
+                        $parent_id = (int) $parent_id;
+                        $sql = "INSERT INTO page(name, url, parent_id, position) VALUES ('$name', '$url', $parent_id, $count)";
                     }
                     if ($conn->query($sql) === TRUE) {
                         echo "Succ";

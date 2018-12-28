@@ -2,6 +2,9 @@
 
         <script>
 $(".editable").each(function(i){
+    if($(this).closest("a").length >= 0){
+        $(this).closest("a").removeAttr("href");
+    }
         var input = $("<input>").attr({
             type: "hidden",
             name: "id",
